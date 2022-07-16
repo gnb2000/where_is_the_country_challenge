@@ -1,16 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Filter.css";
+import axios from 'axios';
 
-export default function Filter() {
+
+export default function Filter(props) {
+
+  const [regionSelected, setRegionSelected] = useState("default");
+
+  const handleChange = event => {
+    setRegionSelected(event.target.value);
+  }
+
+  useEffect(() => {
+    const countries = async () => {
+      const data = await axios("https://restcountries.com/v3.1/region/"+regionSelected);
+      props.setCountries(data.data)
+    }
+
+    if(regionSelected != "default"){
+      countries();
+    }
+  },[regionSelected])
+
+  
+
   return (
     <div>
-        <select className="form-select border-0 py-3 rounded shadow" id="floatingSelect" aria-label="Floating label select example">
-            <option selected>Filter by region</option>
-            <option value="1">Africa</option>
-            <option value="2">America</option>
-            <option value="3">Asia</option>
-            <option value="3">Europe</option>
-            <option value="3">Oceania</option>
+        <select className="form-select border-0 py-3 rounded shadow" value={regionSelected} onChange={handleChange}>
+            <option value="default">Filter by region</option>
+            <option value="africa">Africa</option>
+            <option value="americas">Americas</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
         </select>
     </div>
   )
