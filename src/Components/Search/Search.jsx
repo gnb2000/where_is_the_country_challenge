@@ -16,6 +16,7 @@ function Search(props) {
         try {
             const country = await axios.get("https://restcountries.com/v3.1/name/"+countryInput);
             setCountriesFound(country.data);
+
         } catch(e){
             console.log(e);
         }
@@ -23,6 +24,7 @@ function Search(props) {
 
     useEffect(() => {
         props.setCountries(countriesFound);
+        setCountryInput("");
     },[countriesFound])
 
     return (

@@ -13,8 +13,9 @@ export default function Filter(props) {
 
   useEffect(() => {
     const countries = async () => {
-      const data = await axios("https://restcountries.com/v3.1/region/"+regionSelected);
-      props.setCountries(data.data)
+      const request = await axios("https://restcountries.com/v3.1/region/"+regionSelected);
+      props.setCountries(request.data)
+      setRegionSelected("default");
     }
 
     if(regionSelected != "default"){
