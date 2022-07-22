@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Components/Button/Button';
 import CountryDetail from '../Components/CountryDetail/CountryDetail';
 import Flag from '../Components/Flag/Flag';
 import Header from '../Components/Header/Header';
+import {useLocation} from "react-router-dom";
 
-function Detail({url, name}) {
+function Detail() {
+
+    let location = useLocation();
+    const [dataReceived, setDataReceived] = useState(false);
+
+    useEffect(() => {
+        setDataReceived(true);
+    }, [location])
+
     return (
         <>
             <Header/>
@@ -17,10 +26,20 @@ function Detail({url, name}) {
                         />
                     </div>
                     <div className='col-md-6'>
-                        <Flag url={url} name={name}/>
+                        { dataReceived ? <Flag url={location.state.url} name={location.state.name}/> : console.log("No location yet")} 
                     </div>
                     <div className='col-md-6'>
-                        {/*<CountryDetail title={props.country}/>*/}
+                        <CountryDetail 
+                            title={location.state.title} 
+                            name={location.state.name} 
+                            population={location.state.population}
+                            region={location.state.region}
+                            subregion={location.state.subregion}
+                            capital={location.state.capital}
+                            topLevelDomain={location.state.topLevelDomain}
+                            currencies={location.state.currencies}
+                            languages={location.state.languages}
+                        />
                     </div>
 
                 </div>

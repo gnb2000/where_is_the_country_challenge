@@ -20,6 +20,7 @@ export default function Main() {
         };
         getCountries();
     },[])
+    
     return (
         <>
             <Header/>
