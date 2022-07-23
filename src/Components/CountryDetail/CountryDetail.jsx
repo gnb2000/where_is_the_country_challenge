@@ -33,7 +33,7 @@ function CountryDetail() {
             {
                 dataReceived ?
                 <>
-                    <div className='col-md-12 mb-4'><h3 className='fw-bold'>{location.state.country.name.common}</h3></div>
+                    <div className='col-md-12 mb-4 mt-4'><h3 className='fw-bold'>{location.state.country.name.common}</h3></div>
                     <div className='col-md-6'>
                         <p><span className='text-muted fw-bold'>Native Name:</span> {nativeName}</p>
                         <p><span className='text-muted fw-bold'>Population:</span> {location.state.country.population}</p>
@@ -46,25 +46,25 @@ function CountryDetail() {
                         <p><span className='text-muted fw-bold'>Top Level Domain: </span>{location.state.country.tld[0]}</p>
                         <p><span className='text-muted fw-bold'>Currencies: </span>{currenciesHook.length > 0 ? 
                             currenciesHook.map( (c,index) => {
-                                if (index == (currenciesHook.length - 1))
+                                if (index === (currenciesHook.length - 1))
                                     return c
-                                return c + ","
+                                return c + ", "
                             }) 
                             : null}</p>
                         <p><span className='text-muted fw-bold'>Languages: </span>{languagesHook.length > 0 ? 
                                 languagesHook.map( (language,index) => {
-                                    if (index == (languagesHook.length -1))
+                                    if (index === (languagesHook.length -1))
                                         return language
-                                    return language + ","
+                                    return language + ", "
                                 })
                             : null}</p>
                     </div>
                     <div className='col-md-12 mt-4'>
                         <p>
                         <span className='text-muted fw-bold me-2'>Border Countries:</span>
-                        {dataReceived ? location.state.country.borders.map(border => {
-                            return <button className='btn shadow border-0 px-4'>{border}</button>
-                        }): null}
+                            {location.state.country.borders !== undefined ? location.state.country.borders.map(border => {
+                                return <button className='btn shadow border-0 px-4'>{border}</button>
+                            }): <span>No borders</span>}
                         </p>
                     </div>
                 </> 

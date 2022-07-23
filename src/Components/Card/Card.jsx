@@ -16,9 +16,9 @@ export default function Card({country}) {
             <img src={country.flags.png} className="card-img-top" alt={country.name.common}/>
             <div className="card-body">
                 <h5 className="card-title"><strong>{country.name.common}</strong></h5>
-                <p className="card-text m-0 text-muted fw-bold">Population: {country.population}</p>
-                <p className="card-text m-0 text-muted fw-bold">Region: {country.region}</p>
-                <p className="card-text m-0 text-muted fw-bold">Capital: {country.capital}</p>
+                <p className="card-text m-0 text-muted"><strong>Population:</strong> {country.population}</p>
+                <p className="card-text m-0 text-muted"><strong>Region:</strong> {country.region}</p>
+                <p className="card-text m-0 text-muted"><strong>Capital:</strong> {country.capital}</p>
             </div>
         </div>
       </Link>

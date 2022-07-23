@@ -8,8 +8,11 @@ export default function Header() {
             <div className="container-fluid p-2">
                 <strong className='ms-5'>Where in the world?</strong>
                 <div className="d-flex justify-content-end align-items-center">
-                    <ion-icon name="moon-outline"></ion-icon>
-                    <span className='ms-1 dark-mode-lbl me-5'>Dark-mode</span>
+                    <button className='btn disabled border-0 m-0 p-0'>
+                      <ion-icon name="moon-outline"></ion-icon>
+                      <span className='ms-1 dark-mode-lbl me-5'>Dark-mode</span>
+                    </button>
+
                 </div>
             </div>
         </nav>

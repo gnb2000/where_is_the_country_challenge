@@ -7,4 +7,9 @@
     width: 100%;
     height: 30vh;
     object-fit: cover;
-    }
+}
+
+p{
+    font-weight: 600;
+
+}

@@ -26,15 +26,15 @@ export default function Main() {
             <Header/>
             <div className='container'>
                 <div className='row'>
-                    <div className='d-flex justify-content-start col-md-4'>
+                    <div className='d-flex justify-content-start col-12 col-lg-4'>
                         <Search setCountries={setCountries}/>
                     </div>
-                    <div className='d-flex justify-content-end col-md-8'>
+                    <div className='d-flex mt-5 mt-lg-0 justify-content-start justify-content-lg-end col-6 col-lg-8'>
                         <Filter setCountries={setCountries}/>
                     </div>
                 </div>
                 <div className='row mt-5 d-flex justify-content-center'>
-                    {countries.length > 0 ? <List countries={countries}/> : <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>}
+                    {countries.length > 0 ? <List countries={countries}/> : <div className="spinner-border" role="status"><span className="visually-hidden">Loading...</span></div>}
                 </div>
             </div>
         </>
