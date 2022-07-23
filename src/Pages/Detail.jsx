@@ -27,20 +27,11 @@ function Detail() {
                         />
                     </div>
                     <div className='col-md-6'>
-                        { dataReceived ? <Flag url={location.state.url} name={location.state.name}/> : console.log("No location yet")} 
+                        { dataReceived ? <Flag url={location.state.country.flags.png} name={location.state.country.name.common}/> : console.log("No location yet")} 
                     </div>
                     <div className='col-md-6'>
                         <CountryDetail 
-                            title={location.state.title} 
-                            name={location.state.name} 
-                            population={location.state.population}
-                            region={location.state.region}
-                            subregion={location.state.subregion}
-                            capital={location.state.capital}
-                            topLevelDomain={location.state.topLevelDomain}
-                            currencies={location.state.currencies}
-                            languages={location.state.languages}
-                            borders={location.state.borders}
+                            country={location.state.country}
                         />
                     </div>
 
