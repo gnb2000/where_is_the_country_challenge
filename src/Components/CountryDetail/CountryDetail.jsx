@@ -62,8 +62,8 @@ function CountryDetail() {
                     <div className='col-md-12 mt-4'>
                         <p>
                         <span className='text-muted fw-bold me-2'>Border Countries:</span>
-                            {location.state.country.borders !== undefined ? location.state.country.borders.map(border => {
-                                return <button className='btn shadow border-0 px-4'>{border}</button>
+                            {location.state.country.borders !== undefined ? location.state.country.borders.map( (border,index) => {
+                                return <button key={index} className='btn shadow border-0 px-4'>{border}</button>
                             }): <span>No borders</span>}
                         </p>
                     </div>
