@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import "./Card.css"
 
 export default function Card(props) {
+
   
   return (
       <Link 
         to={"/detail"}
-        style={{ textDecoration: 'none' }}
+        style={{ textDecoration: 'none' ,color: 'inherit'}}
         state= {{
           title: props.title,
           name: props.name,
@@ -18,7 +19,8 @@ export default function Card(props) {
           topLevelDomain: props.topLevelDomain,
           currencies: props.currencies,
           languages: props.languages,
-          url: props.url
+          url: props.url,
+          borders: props.borders
 
         }}>
         <div className="card pb-4 h-100">

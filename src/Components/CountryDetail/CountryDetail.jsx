@@ -7,14 +7,27 @@ function CountryDetail() {
 
     let location = useLocation();
     const [dataReceived, setDataReceived] = useState(false);
+    const [currenciesHook,setCurrencies] = useState([]);
+    const [languagesHook, setLanguages] = useState([]);
+    const [nativeName, setNativeName] = useState("");
+    const [borders, setBorders] = useState([]);
 
     useEffect(() => {
         setDataReceived(true);
-        let currencies = location.state.currencies;
+        const currencies = location.state.currencies;
+        const languages = location.state.languages;
+        const name = location.state.name;
         Object.entries(currencies).forEach(([key,value]) => {
-            console.log(value.name)
+            setCurrencies(currenciesHook => [...currenciesHook, value.name]);
         })
-    }, [location])
+        Object.entries(languages).forEach(([key,value]) => {
+            setLanguages(languagesHook => [...languagesHook, value]);
+        })
+        Object.entries(name).forEach(([key,value]) => {
+            setNativeName(value.official);
+        })
+        setBorders(location.state.borders)
+    }, [location.state])
 
     return (
         <div className='container'>
@@ -24,7 +37,7 @@ function CountryDetail() {
                 <>
                     <div className='col-md-12 mb-4'><h3 className='fw-bold'>{location.state.title}</h3></div>
                     <div className='col-md-6'>
-                        <p><span className='text-muted fw-bold'>Native Name:</span> {location.state.name}</p>
+                        <p><span className='text-muted fw-bold'>Native Name:</span> {nativeName !== "" ? nativeName : null}</p>
                         <p><span className='text-muted fw-bold'>Population:</span> {location.state.population}</p>
                         <p><span className='text-muted fw-bold'>Region: </span>{location.state.region}</p>
                         <p><span className='text-muted fw-bold'>Sub Region: </span>{location.state.subregion}</p>
@@ -33,16 +46,19 @@ function CountryDetail() {
                     </div>
                     <div className='col-md-6'>
                         <p><span className='text-muted fw-bold'>Top Level Domain: </span>{location.state.topLevelDomain}</p>
-                        <p><span className='text-muted fw-bold'>Currencies: </span>{/*location.state.currencies*/}</p>
-                        <p><span className='text-muted fw-bold'>Languages: </span>{location.state.languages}</p>
+                        <p><span className='text-muted fw-bold'>Currencies: </span>{currenciesHook.length > 0 ? currenciesHook.map(c => c + ",") : null/*location.state.currencies*/}</p>
+                        <p><span className='text-muted fw-bold'>Languages: </span>{languagesHook.length > 0 ? languagesHook.map(language => language + ", ") : null}</p>
                     </div>
                     <div className='col-md-12 mt-4'>
                         <p>
-                            <span className='text-muted fw-bold me-2'>Border Countries:</span>
-                            <button className='btn shadow border-0 px-4'>France</button>
-                            <button className='btn shadow border-0 px-4'>France</button>
-                            <button className='btn shadow border-0 px-4'>France</button>
-
+                        <span className='text-muted fw-bold me-2'>Border Countries:</span>
+                        {
+                            borders.length > 0 ? borders.map(border => {
+                                    return (
+                                        <button className='btn shadow border-0 px-4'>{border}</button>
+                                    )
+                                }): null
+                        }
                         </p>
                     </div>
                 </> 

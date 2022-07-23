@@ -33,8 +33,8 @@ export default function Main() {
                         <Filter setCountries={setCountries}/>
                     </div>
                 </div>
-                <div className='row mt-5'>
-                    {countries.length > 0 ? <List countries={countries}/> : console.log("No countries available")}
+                <div className='row mt-5 d-flex justify-content-center'>
+                    {countries.length > 0 ? <List countries={countries}/> : <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>}
                 </div>
             </div>
         </>

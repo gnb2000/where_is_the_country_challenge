@@ -23,6 +23,7 @@ function Detail() {
                         <Button 
                             text="Back" 
                             icon={[<ion-icon name="arrow-back-outline" size="large"></ion-icon>]}
+                            url="/"
                         />
                     </div>
                     <div className='col-md-6'>
@@ -39,6 +40,7 @@ function Detail() {
                             topLevelDomain={location.state.topLevelDomain}
                             currencies={location.state.currencies}
                             languages={location.state.languages}
+                            borders={location.state.borders}
                         />
                     </div>
 
