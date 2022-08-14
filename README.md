@@ -23,7 +23,12 @@ Your users should be able to:
 ## Use the project
 
 - Locally: run "npm start" in the root directory project.
-- Cloud: 
+- Cloud: https://where-is-the-country-gnb.netlify.app/
+
+![image](https://user-images.githubusercontent.com/69126392/182033311-d08930a3-da06-4ecf-ae08-2ac594e72bd5.png)
+![image](https://user-images.githubusercontent.com/69126392/182033338-f82c95ef-acd7-4f5a-91c9-35b48f516fd6.png)
+![image](https://user-images.githubusercontent.com/69126392/182033357-27f331cb-0415-4038-ba54-b1e6f971f6d9.png)
+
 
 
 
