@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./Filter.css";
 import axios from 'axios';
+import CountryService from '../../Services/CountryService';
 
 
 export default function Filter(props) {
@@ -13,7 +14,7 @@ export default function Filter(props) {
 
   useEffect(() => {
     const countries = async () => {
-      const request = await axios("https://restcountries.com/v3.1/region/"+regionSelected);
+      const request = await CountryService.getCountriesByRegion(regionSelected);
       props.setCountries(request.data)
       setRegionSelected("default");
     }

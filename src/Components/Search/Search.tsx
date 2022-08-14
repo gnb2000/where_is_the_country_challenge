@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Search.css";
 import axios from 'axios';
-import CountryService from '../../Services/CountryService';
 
 
 function Search(props) {
@@ -15,7 +14,7 @@ function Search(props) {
 
     const getCountryByName = async () => {
         try {
-            const country = await CountryService.getCountryByName(countryInput);
+            const country = await axios.get("https://restcountries.com/v3.1/name/"+countryInput);
             setCountriesFound(country.data);
 
         } catch(e){

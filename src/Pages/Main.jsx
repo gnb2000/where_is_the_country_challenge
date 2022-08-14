@@ -4,6 +4,7 @@ import Filter from '../Components/Filter/Filter';
 import Header from '../Components/Header/Header';
 import List from '../Components/List/List';
 import Search from '../Components/Search/Search';
+import CountryService from '../Services/CountryService';
 
 export default function Main() {
 
@@ -12,7 +13,7 @@ export default function Main() {
     useEffect(() => {
         const getCountries = async () => {
             try {
-                const countries = await axios.get('https://restcountries.com/v3.1/all');
+                const countries = await CountryService.getAllCountries();
                 setCountries(countries.data);
             } catch (err) {
                 console.error(err);
