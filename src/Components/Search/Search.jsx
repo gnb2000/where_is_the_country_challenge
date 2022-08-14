@@ -4,7 +4,7 @@ import axios from 'axios';
 import CountryService from '../../Services/CountryService';
 
 
-function Search(props) {
+function Search({setCountries}) {
 
     const [countryInput, setCountryInput] = useState("");
     const [countriesFound, setCountriesFound] = useState([]);
@@ -17,14 +17,13 @@ function Search(props) {
         try {
             const country = await CountryService.getCountryByName(countryInput);
             setCountriesFound(country.data);
-
         } catch(e){
             console.log(e);
         }
     }
 
     useEffect(() => {
-        props.setCountries(countriesFound);
+        setCountries(countriesFound);
         setCountryInput("");
     },[countriesFound])
 

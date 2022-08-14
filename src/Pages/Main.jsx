@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 import Filter from '../Components/Filter/Filter';
 import Header from '../Components/Header/Header';
@@ -21,6 +20,13 @@ export default function Main() {
         };
         getCountries();
     },[])
+
+    const handleSetCountries = (newCountries) => {
+        //setCountries(countries => [...countries, newCountries])
+        setCountries(newCountries);
+    }
+
+    
     
     return (
         <>
@@ -28,10 +34,10 @@ export default function Main() {
             <div className='container'>
                 <div className='row'>
                     <div className='d-flex justify-content-start col-12 col-lg-4'>
-                        <Search setCountries={setCountries}/>
+                        <Search setCountries={handleSetCountries}/>
                     </div>
                     <div className='d-flex mt-5 mt-lg-0 justify-content-start justify-content-lg-end col-6 col-lg-8'>
-                        <Filter setCountries={setCountries}/>
+                        <Filter setCountries={handleSetCountries}/>
                     </div>
                 </div>
                 <div className='row mt-5 d-flex justify-content-center'>
